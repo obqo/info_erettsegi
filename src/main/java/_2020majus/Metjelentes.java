@@ -126,10 +126,11 @@ public class Metjelentes {
 
     private void saveFile() {
         for (String name : getNameSet()) {
-            try (BufferedWriter writer = Files.newBufferedWriter(Path.of("src/main/java/_2019oktober/" + name +".txt"))) {
+            try (BufferedWriter writer = Files.newBufferedWriter(Path.of("src/main/java/_2020majus/" + name + ".txt"))) {
+                writer.write(name + "\n");
                 for (Station item : stations) {
                     if (item.getName().equals(name)) {
-                        writer.write(convertTime(item.getTime()) + " " + "#".repeat(Integer.parseInt(item.getWind().substring(3,5)))+"\n");
+                        writer.write(convertTime(item.getTime()) + " " + "#".repeat(Integer.parseInt(item.getWind().substring(3, 5))) + "\n");
                     }
                 }
             } catch (IOException ioe) {
@@ -162,10 +163,12 @@ public class Metjelentes {
         System.out.print(i++ + ".feladat");
         System.out.println(metjelentes.noWind());
 
-        System.out.println(i + ".feladat");
+        System.out.println(i++ + ".feladat");
         metjelentes.getTempAvgAndRange();
 
         //6.feladat
+        System.out.println(i + ".feladat");
+        System.out.println("A fájlok elkészültek.");
         metjelentes.saveFile();
     }
 }
